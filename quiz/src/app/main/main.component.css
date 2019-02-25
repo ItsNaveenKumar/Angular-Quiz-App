@@ -1,0 +1,27 @@
+.container-fluid{background-image: url("https://mariadissertation.files.wordpress.com/2013/12/picture-2sahding.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height:100%;
+    background-position: center;
+    padding-bottom: 9%;
+    padding-top:5%;
+}
+.logo{
+    
+    width:20%;
+    height:20%;
+}
+.card-img-top{
+    width:15%;
+    height:15%;
+}
+h1{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color:mediumturquoise;
+}
+.card:hover{
+    transition-timing-function: ease-in;
+    transition: 1s;
+    transform: scale(1.03, 1.03) ;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }

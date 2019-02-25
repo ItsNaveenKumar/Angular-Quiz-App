@@ -1,0 +1,100 @@
+<div class="container-fluid">
+<app-navbar></app-navbar>
+<div class="container text-center">
+  <h1>Welcome to Admin Panel</h1>
+  <h5 class="mb-5">Now you can Create, Edit, Delete Quiz</h5>
+  <div class="add card mb-2 mx-auto" (click)="onAddQuiz()" >
+      <div class="card-body">
+        <p class="plus">+</p>
+      </div></div>
+
+      <div class="container" *ngIf="add">
+      <form>
+        <input type="text" class="form-control mb-2" placeholder="Topic" name="topic" value="" #topic required [(ngModel)]="Topic" #top="ngModel"  pattern="[a-zA-Z0-9]*$">
+        
+        <button class="btn btn-lg btn-primary  mb-2" (click)="onAddModule(topic)">ADD Quiz Module</button>
+      </form>
+      </div>
+
+  <div class="row mt-5">
+      <ng-container *ngFor="let module of this.quizService.modules; let j=index">
+      <div class="col-lg-3 col-sm-6 col-12 mb-2">
+      
+          <div *ngIf="addModule" class="new card mb-2 text-center" >
+              <img class="card-img-top pt-3 mx-auto d-block mb-2" src="../assets/images/html.png" alt="HTML">
+              <div class="card-body">
+                  <h4 class="card-text">{{module.topics}}</h4>
+                  
+                  <button  class="btn btn-primary d-block w-100 mb-2" (click)="onAddQuestion(j)">Add Questions</button>
+                  
+                  <button  class="btn btn-success d-block w-100 mb-2" (click)="onShowModule(j)">Show Module</button>
+                  
+                  <button  class="btn btn-danger d-block w-100" (click)="onDeleteModule(j)">Delete Module</button>
+              </div>
+            </div></div></ng-container>
+               </div></div>    </div> 
+
+        <div class="container rounded mb-5 fields pt-5 mt-5" *ngIf="addQuestions" >
+            
+          <form>
+
+            <label ><b>Question {{jj}}:</b></label>
+            <input type="text" class="mt-2 form-control mb-2" placeholder="Question" name="question" [(ngModel)]='question' required  #ques>
+            <div class="row">
+            <div class="col-md-6 col-12">
+            
+            <input type="text" class="form-control  mb-2" placeholder="Option A" name="option1" [(ngModel)]='opt1' required  #A>
+          </div>
+            <div class="col-md-6 col-12">
+                <input type="text" class="form-control  mb-2" placeholder="Option B" name="option2" [(ngModel)]='opt2' required  #B>
+                <!-- <input type="text" class="form-control  mb-2" placeholder="Enter T for True & F for False" name="answer1" [(ngModel)]='ans1'> -->
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-12">
+            
+            <input type="text" class="form-control  mb-2" placeholder="Option C" name="option3" [(ngModel)]='opt3' required  #C>
+          </div>
+            <div class="col-md-6 col-12">
+                <input type="text" class="form-control  mb-2" placeholder="Option D" name="option4" [(ngModel)]='opt4' required  #D>
+              <!-- <button type="button" class="btn btn-lg btn-primary  mb-5 w-100 d-block"  *ngIf="addMore" (click)="onSubmit()">SAVE</button>   -->
+              <!-- <input type="text" class="form-control  mb-2" placeholder="Enter T for True & F for False" name="answer3" [(ngModel)]='ans3'> -->
+          </div>
+        </div>
+    
+        <div class="row">
+            <div class="col-md-6 col-12">
+            
+            <input type="text" class="form-control  mb-2" placeholder="Answer i.e A B C D" name="answer" [(ngModel)]='ans' required  pattern="[A-D]" #correct>
+          </div>
+            <div class="col-md-6 col-12">
+              <button type="button" class="btn btn-lg btn-primary  mb-5 w-100 d-block"  *ngIf="addMore" (click)="onSubmit(ques,A,B,C,D,correct)">SAVE</button>  
+              <!-- <input type="text" class="form-control  mb-2" placeholder="Enter T for True & F for False" name="answer3" [(ngModel)]='ans3'> -->
+          </div>
+        </div>
+       
+        </form></div>
+        <div class="questions rounded pt-5 container mt-5 mb-5" *ngIf="showQuestions">
+          <div *ngFor="let question of this.quizService.modules[modIndex].questions; let idd=index">
+            <h4>Question {{idd+1}}: {{question.quest}}</h4>
+            <div class="pl-2">
+            <p class="options">(A) {{question.option1}}</p>
+            <p class="options">(B) {{question.option2}}</p>
+            <p class="options">(C) {{question.option3}}</p>
+            <p class="options">(D) {{question.option4}}</p>
+          </div></div>
+        </div>
+     
+
+
+<app-footer></app-footer>
+
+
+
+
+
+
+
+
+
+  

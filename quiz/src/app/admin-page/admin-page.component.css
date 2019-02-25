@@ -1,0 +1,70 @@
+h1,h5{
+    color:white;
+}
+
+.add{
+    
+    width: 25%;
+      
+    opacity:0.8;
+    background-color: lightgray;
+   
+}
+.add:hover{
+    opacity:1;
+    background-color:white;
+    
+
+}
+p:hover{
+    color:black;
+}
+.plus{
+    font-size:8vw;
+  
+ color: darkgray;
+}
+.new{
+    width: 100%;
+    background-color:white;
+    
+    
+    
+
+}
+img{
+    width:50%;
+    height:40%;
+}
+
+.container-fluid{background-image: url("https://mariadissertation.files.wordpress.com/2013/12/picture-2sahding.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height:100%;
+    background-position: center;
+    padding-bottom: 17%;
+}
+.new:hover{
+    transition-timing-function: ease-in;
+    transition: 1s;
+    transform: scale(1.03, 1.03) ;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+    .questions{
+        border:1px solid darkgray;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+    .options{
+        font-size:110%;
+    }
+
+    .fields{
+        border:1px solid darkgray;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    label{
+        font-size:120%;
+    }
+
+    

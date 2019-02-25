@@ -1,0 +1,121 @@
+<div class="container-fluid">
+<app-navbar></app-navbar>
+
+
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <div class="modal-header">
+          <h4 class="modal-title">Quiz Score</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <div class="modal-body">
+          Your Score is: {{score}}
+        </div>
+      
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+<div class="container text-center mt-5">
+<h1>Welcome to Student Panel</h1>
+<h5>Take Quiz & Gain More Knowledge</h5>
+<div class="row mt-5 text-center">
+    <div class="col-lg-3 col-sm-6 col-12 mb-2 text-center">
+        <div  class="new card mb-2 text-center" >
+            <img class="card-img-top pt-3 mx-auto d-block mb-2" src="../assets/images/gk.jpg" alt="HTML">
+            <div class="card-body">
+                <h4 class="card-text">General Knowledge</h4>
+                
+                <button  class="btn btn-primary d-block w-100 mb-3" (click)="onQuizStartt()">Start Quiz</button>
+
+            </div>
+          </div>
+    </div>
+    <div class="col-lg-3 col-sm-6 col-12 mb-2">
+        <div  class="new card mb-2 text-center" >
+            <img class="card-img-top pt-3 mx-auto d-block mb-2" src="../assets/images/current.png" alt="HTML">
+            <div class="card-body">
+                <h4 class="card-text">General Awareness</h4>
+                
+                <button  class="btn btn-primary d-block w-100 mb-2" (click)="onQuiz2Startt()">Start Quiz</button>
+
+            </div>
+          </div>
+    </div>
+    <ng-container *ngFor="let module of this.quizService.modules; let j=index">
+    <div class="col-lg-3 col-sm-6 col-12 mb-2">
+    
+        <div  class="new card mb-3 text-center" >
+            <img class="card-img-top pt-3 mx-auto d-block mb-2" src="../assets/images/html.png" alt="HTML">
+            <div class="card-body">
+                <h4 class="card-text">{{module.topics}}</h4>
+                
+                <button  class="btn btn-primary d-block w-100 mb-2" (click)="onQuizStart(j)">Start Quiz</button>
+
+            </div>
+          </div></div></ng-container>
+             </div>
+             
+</div>
+</div>
+
+             <div class="Question rounded container mt-5  mb-5 " *ngIf="showQuestions">
+                <div *ngFor="let question of this.quizService.modules[id].questions; let idd=index">
+                  <h4 class="mt-3">Question {{idd+1}}: {{question.quest}}</h4>
+                   <div class="container ml-2">
+                   <input type="radio" class="form-check-input"  name="opt{{idd+1}}" value="A" #opt1> <label>(A) {{question.option1}}</label><br>
+                   <input type="radio" class="form-check-input"  name="opt{{idd+1}}" value="B" #opt2> <label>(B) {{question.option2}}</label><br>
+                   <input type="radio" class="form-check-input"  name="opt{{idd+1}}" value="C" #opt3> <label>(C) {{question.option3}}</label><br>
+                   <input type="radio" class="form-check-input"  name="opt{{idd+1}}" value="D" #opt4> <label>(D) {{question.option4}}</label><br>
+                   <button class="btn btn-lg btn-primary mb-5" #disable style="float:right"(click)="onSave(opt1,opt2,opt3,opt4,idd,disable)">Save</button>
+                  </div>
+                </div>
+                <div class="pt-3">
+                <button class="mt-5  btn btn-lg btn-primary mx-auto d-block mb-5" data-toggle="modal" data-target="#myModal" (click)="onQuizSubmit()">Submit</button>
+              </div></div>
+              
+              <div class="Question rounded container mt-5 pt-5 pl-5 mb-5" *ngIf="showQues">
+                  <div class="mb-5" *ngFor="let ques of this.quizService.questionList1; let idd=index">
+                    <h4 class="mt-3">Question {{idd+1}}: {{ques.quest}}</h4>
+                     <div class="container ml-2">
+                     <input type="radio" class="form-check-input"  name="opt{{idd+1}}"  ng-model="ans" value="A" #opt1> <label>(A) {{ques.option1}}</label><br>
+                     <input type="radio" class="form-check-input"  name="opt{{idd+1}}"  ng-model="ans" value="B" #opt2> <label>(B) {{ques.option2}}</label><br>
+                     <input type="radio" class="form-check-input"  name="opt{{idd+1}}"  ng-model="ans" value="C" #opt3> <label>(C) {{ques.option3}}</label><br>
+                     <input type="radio" class="form-check-input"  name="opt{{idd+1}}"  ng-model="ans" value="D" #opt4> <label>(D) {{ques.option4}}</label><br>
+                     <button class="btn btn-lg btn-primary mb-5" #disable style="float:right"(click)="onSave(opt1,opt2,opt3,opt4,idd,disable)">Save</button>
+                    
+                    
+                    </div>
+                  </div>
+                  <div class="pt-3">
+                  <button class=" mt-5 btn btn-lg btn-primary mx-auto d-block mb-5" data-toggle="modal" data-target="#myModal" (click)="onQuizSubmit()" >Submit</button>
+                </div></div>
+
+                <div class="Question rounded container mt-5 pt-5 pl-5 mb-5" *ngIf="showQuest">
+                    <div class="mb-5" *ngFor="let ques of this.quizService.questionList2; let idd=index">
+                      <h4 class="mt-3">Question {{idd+1}}: {{ques.quest}}</h4>
+                       <div class="container ml-2">
+                       <input type="radio" class="form-check-input"  name="opt{{idd+1}}" value="A" #opt1> <label>(A) {{ques.option1}}</label><br>
+                       <input type="radio" class="form-check-input"  name="opt{{idd+1}}" value="B" #opt2> <label>(B) {{ques.option2}}</label><br>
+                       <input type="radio" class="form-check-input"  name="opt{{idd+1}}" value="C" #opt3> <label>(C) {{ques.option3}}</label><br>
+                       <input type="radio" class="form-check-input"  name="opt{{idd+1}}" value="D" #opt4> <label>(D) {{ques.option4}}</label><br>
+                       <button class="btn btn-lg btn-primary mb-4" #disable style="float:right"(click)="onSave(opt1,opt2,opt3,opt4,idd,disable)">Save</button>
+                      </div>
+                    </div>
+                    <div class="pt-3">
+                    <button class=" mt-5 btn btn-lg btn-primary mx-auto d-block mb-5" data-toggle="modal" data-target="#myModal" (click)="onQuizSubmit()" >Submit</button>
+                  </div></div>
+
+ <app-footer></app-footer>
+
+
+
+

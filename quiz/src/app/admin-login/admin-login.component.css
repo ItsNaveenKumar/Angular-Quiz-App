@@ -1,0 +1,34 @@
+
+.main{
+    background-color: white;
+    margin-top:10%;
+    padding-top:2%;
+    margin-bottom: 10%;
+    
+
+}
+@media only screen and (max-width: 900px) {
+   .main{
+       width:100%;
+   }
+  }
+  @media only screen and (min-width: 901px) {
+    .main{
+        width:25%;
+    }
+   }
+
+   .container-fluid{background-image: url("https://mariadissertation.files.wordpress.com/2013/12/picture-2sahding.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height:100%;
+    background-position: center;
+    padding-bottom: 5%;
+}
+
+input.ng-invalid.ng-touched{
+    border: 1px solid red;
+}
+input.ng-valid{
+    border: 1px solid green;
+}
